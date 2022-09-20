@@ -32,13 +32,15 @@
     }
   ],
   "dependencies": {
-    "unfetch": "^4.2.0",
-    "webpack": "^5.74.0"
+    "@lukeed/uuid": "^2.0.0",
+    "unfetch": "^4.2.0"
   },
   "devDependencies": {
     "circular-dependency-plugin": "^5.2.2",
     "compression-webpack-plugin": "^10.0.0",
     "terser-webpack-plugin": "^5.3.6",
-    "webpack-bundle-analyzer": "^4.6.1"
+    "tslib": "^2.4.0",
+    "webpack-bundle-analyzer": "^4.6.1",
+    "webpack": "^5.74.0"
   }
 }

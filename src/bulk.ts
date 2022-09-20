@@ -1,22 +1,36 @@
 import { EventType } from "./types"
-import { LocalStorage } from "./storage"
+import { storage, LocalStorage } from "./storage"
 import { configuration } from "./initialize"
+import { sendRequest } from './ajax'
+import { hasConfiguredWell } from './initialize'
+import { getDeviceId, getIso8601 } from "./utils"
 
 const BUNCH_KEY = 'DeepinEventsBulk'
-const storage = new LocalStorage()
 
 function releaseCondition(items: EventType[]) {
     return items.length > 5
 }
 
-export function putInQueue(eventObject: EventType) {
-    if (!configuration.sendEventsBulky || !LocalStorage.available()) {
-        return [eventObject]
+export function sendInQueue(eventData: any, eventObject: EventType) {
+    if (!hasConfiguredWell()) { return }
+    const event = {
+        ...eventObject,
+        ...eventData,
+        deviceId: getDeviceId(),
+        timestamp: getIso8601(),
     }
-    let items: EventType[] = storage.get(BUNCH_KEY) || []
-    items.push(eventObject)
+    if (!configuration.sendEventsBulky || !LocalStorage.available()) {
+        return [event]
+    }
+    let items: any[] = storage.get(BUNCH_KEY) || []
+    items.push(event)
 
     const releaseEventsStack = releaseCondition(items)
-    storage.set(BUNCH_KEY, releaseEventsStack ? [] : items)
-    return releaseEventsStack ? items: null
+    if (releaseEventsStack) {
+        storage.set(BUNCH_KEY, [])
+        return sendRequest(items)
+    } else {
+        storage.set(BUNCH_KEY, items)
+        return Promise.resolve()
+    }
 }

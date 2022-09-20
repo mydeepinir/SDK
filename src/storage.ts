@@ -37,3 +37,5 @@ export class LocalStorage {
     }
 }
 
+
+export const storage = new LocalStorage()

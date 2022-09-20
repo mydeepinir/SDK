@@ -3,10 +3,15 @@ import { Configuration } from "./types"
 export let configuration: Configuration
 export function init(config: Configuration) {
     configuration = config
+    setUser(config.userID)
 }
 
 function log(msg: string) {
     console.log('Deepin', msg)
+}
+
+export function setUser(userId?: string) {
+    configuration.userID = userId
 }
 
 export function hasConfiguredWell() {
