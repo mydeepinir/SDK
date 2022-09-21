@@ -18,11 +18,8 @@ export function hasConfiguredWell() {
     if (!configuration) {
         log('It must be initialized')
         return false
-    } else if (!configuration.apiKey) {
-        log('Please set the Api key in the init method')
-        return false
-    } else if (!configuration.userID) {
-        log('userId is null')
+    } else if (!configuration.writeKey) {
+        log('Please set the writeKey in the init method')
         return false
     }
     return true

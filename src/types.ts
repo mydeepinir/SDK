@@ -1,6 +1,6 @@
 export interface Configuration {
     sendEventsBulky?: boolean
-    apiKey: string
+    writeKey: string
     userID?: string
 }
 
@@ -106,3 +106,13 @@ export interface TrackProperties extends CommonProperties {
 }
 
 export type EventType = PageProperties | ScreenProperties | TrackProperties | AliasProperties
+
+export enum ActionType {
+    Identify = 'identify',
+    Track = 'track',
+    Alias = 'alias',
+    Group = 'group',
+    Page = 'page',
+    Screen = 'screen',
+    Batch = 'batch',
+}

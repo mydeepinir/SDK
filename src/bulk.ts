@@ -1,4 +1,4 @@
-import { EventType } from "./types"
+import { ActionType, EventType } from "./types"
 import { storage, LocalStorage } from "./storage"
 import { configuration } from "./initialize"
 import { sendRequest } from './ajax'
@@ -11,21 +11,21 @@ function releaseCondition(items: EventType[]) {
     return items.length > 5
 }
 
-export function sendInQueue(eventData: any, eventObject: EventType) {
-    if (!hasConfiguredWell()) { return }
+export function sendInQueue(actionType: ActionType, eventData: any, eventObject: EventType) {
+    if (!hasConfiguredWell()) { return Promise.reject() }
+
     const event = {
+        type: actionType,
         ...eventObject,
         ...eventData,
         deviceId: getDeviceId(),
         timestamp: getIso8601(),
     }
-    if (!configuration.sendEventsBulky || !LocalStorage.available()) {
-        return [event]
-    }
-    let items: any[] = storage.get(BUNCH_KEY) || []
-    items.push(event)
 
-    const releaseEventsStack = releaseCondition(items)
+    const localStorageIsAvailable = LocalStorage.available()
+    let items: any[] = localStorageIsAvailable ? storage.get(BUNCH_KEY) || [] : []
+    items.push(event)
+    const releaseEventsStack = !configuration.sendEventsBulky || !localStorageIsAvailable || releaseCondition(items)
     if (releaseEventsStack) {
         storage.set(BUNCH_KEY, [])
         return sendRequest(items)
