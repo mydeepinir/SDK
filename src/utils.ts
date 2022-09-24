@@ -15,3 +15,7 @@ export function getDeviceId() {
     }
     return deviceId
 }
+
+export function log(msg: string) {
+    console.log('Deepin', msg)
+}

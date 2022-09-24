@@ -1,8 +1,8 @@
 import { LitElement, css, html } from 'lit'
-import { customElement, property } from 'lit/decorators'
-import { track, identify, init } from '../../src'
+import { customElement, property } from 'lit/decorators.js'
+import deepIn from '../../src'
 
-init({ writeKey: 'dHuUTYnzLb4bTV2JwQDH' })
+deepIn.init('dHuUTYnzLb4bTV2JwQDH')
 
 /**
  * An example element.
@@ -25,14 +25,17 @@ export class MyElement extends LitElement {
       this.response = JSON.stringify(e)
     })
   }
-  private _login() {
-    this.showResponse(identify('12091906-01011992', {
+  private _identify() {
+    this.showResponse(deepIn.identify('12091906-01011992', {
       traits_firstName: 'Grace Hopper',
       traits_username: 'grace@usnavy.gov'
     }))
   }
   private _track() {
-    this.showResponse(track('salam', {}))
+    this.showResponse(deepIn.track('Article Bookmarked', 'Article'))
+  }
+  private _page() {
+    this.showResponse(deepIn.page('home', 'articles'))
   }
 
   render() {
@@ -44,14 +47,17 @@ export class MyElement extends LitElement {
       </div>
       <slot></slot>
       <div class="card">
-        <button @click=${this._login} part="button">
-          Login
+        <button @click=${this._identify} part="button">
+          Identify
+        </button>
+        <button @click=${this._page} part="button">
+          Page
         </button>
         <button @click=${this._track} part="button">
           Track
         </button>
       </div>
-      <p class="read-the-docs">${this.docsHint}</p>
+      <p class="read-the-docs">${this.response}</p>
     `
   }  
   

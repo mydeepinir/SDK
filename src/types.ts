@@ -3,6 +3,10 @@ export interface Configuration {
     writeKey: string
     userID?: string
 }
+export interface InitProperties {
+    sendEventsBulky?: boolean
+    userID?: string
+}
 
 export interface CommonProperties {
     active?: boolean
