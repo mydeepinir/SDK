@@ -24,7 +24,7 @@ export function sendInQueue(actionType: ActionType, eventData: any, eventObject:
     const localStorageIsAvailable = LocalStorage.available()
     let items: any[] = localStorageIsAvailable ? storage.get(BUNCH_KEY) || [] : []
     items.push(event)
-    const releaseEventsStack = !config.configuration.sendEventsBulky || !localStorageIsAvailable || releaseCondition(items)
+    const releaseEventsStack = config.configuration.dontBunch || !localStorageIsAvailable || releaseCondition(items)
     if (releaseEventsStack) {
         storage.set(BUNCH_KEY, [])
         return sendRequest(items)

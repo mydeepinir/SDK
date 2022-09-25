@@ -1,11 +1,9 @@
-export interface Configuration {
-    sendEventsBulky?: boolean
-    writeKey: string
+export interface InitProperties {
+    dontBunch?: boolean
     userID?: string
 }
-export interface InitProperties {
-    sendEventsBulky?: boolean
-    userID?: string
+export interface Configuration extends InitProperties{
+    writeKey: string
 }
 
 export interface CommonProperties {
