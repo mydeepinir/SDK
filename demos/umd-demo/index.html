@@ -1,0 +1,81 @@
+<html lang="en">
+
+<head>
+    <script src="../../dist/umd/standalone.js"></script>
+    <script>
+        const deepIn = window.Deepin.default
+        const $ = selector => document.querySelector(selector)
+        const $bind = (selector, event, callback) => {
+            $(selector).addEventListener(event, callback)
+        }
+        const $click = (selector, callback) => $bind(selector, 'click', callback)
+
+        function showResponse(promise) {
+            console.log('sent a request')
+            promise.then((d) => {
+                $('.response').innerHTML = JSON.stringify(d, null, 4)
+            }).catch(e => {
+                $('.response').innerHTML = JSON.stringify(e, null, 4)
+            })
+        }
+        function identify() {
+            showResponse(deepIn.identify('12091906-01011992', {
+                traits_firstName: 'Grace Hopper',
+                traits_username: 'grace@usnavy.gov'
+            }))
+        }
+        function track() {
+            showResponse(deepIn.track('Article Bookmarked', 'Article'))
+        }
+        function page() {
+            showResponse(deepIn.page('home'))
+        }
+        function group() {
+            showResponse(deepIn.group('3243432', {}))
+        }
+        function alias() {
+            showResponse(deepIn.alias('345342424323', '354222234423'))
+        }
+
+        window.addEventListener("DOMContentLoaded", function() {
+            $click('button.identify', identify)
+            $click('button.track', track)
+            $click('button.page', page)
+            $click('button.group', group)
+            $click('button.alias', alias)
+            $click('.setWriteKey', () => {
+                const writeKeyText = $('input.writeKeyInput').value
+                deepIn.init(writeKeyText, { dontBunch: true })
+                $('.actionsDiv').style.opacity = 1
+                $('.WriteKeyDiv').style.opacity = 0
+                $('.WriteKeyDiv').style.marginTop = '-4rem'
+            })
+        })
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepin SDK</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <h2><img src="./logo.png">SDK - UMD Demo</h2>
+            <div class="WriteKeyDiv transition" style="opacity: 1; margin-top: 0;">
+                <input value="dHuUTYnzLb4bTV2JwQDH" class="writeKeyInput" placeholder="WriteKey" type="text">
+                <button class="setWriteKey">Set write key</button>
+            </div>
+            <div class="actionsDiv transition" style="opacity: 0;">
+                <button class="identify">Identify</button>
+                <button class="Track">Track</button>
+                <button class="Page">Page</button>
+                <button class="Group">Group</button>
+                <button class="Alias">Alias</button>
+                <pre class="response"></pre>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
