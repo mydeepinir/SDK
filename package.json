@@ -4,27 +4,21 @@
   "description": "javascript SDK to use deepin platform",
   "license": "MIT",
   "main": "./dist/cjs/index.js",
+  "browser": "./dist/pkg/index.js",
   "module": "./dist/pkg/index.js",
   "types": "./dist/types/index.d.ts",
-  "browser": {
-    "./dist/cjs/node": "./dist/cjs/node/node.browser.js",
-    "./dist/cjs/node.js": "./dist/cjs/node/node.browser.js",
-    "./dist/pkg/node": "./dist/pkg/node/node.browser.js",
-    "./dist/pkg/node.js": "./dist/pkg/node/node.browser.js"
-  },
   "scripts": {
-    "demo": "cd lit-demo && yarn && yarn dev",
+    "demo": "cd ./demos/es-demo && yarn && yarn dev",
     "umd": "webpack",
-    "tsc": "yarn run -T tsc",
-    "concurrently": "yarn run -T concurrently",
-    "watch": "yarn concurrently 'NODE_ENV=production yarn umd --watch' 'yarn pkg --watch --incremental'",
-    "build": "yarn clean && yarn concurrently 'NODE_ENV=production yarn umd' 'yarn pkg' 'yarn cjs'",
-    "postpublish": "echo 'running postpublish build step...' && NODE_ENV=production PROD_RELEASE=true bash scripts/release.sh",
-    "pkg": "yarn tsc -p tsconfig.build.json",
-    "cjs": "yarn tsc -p tsconfig.build.json --outDir ./dist/cjs --module commonjs",
+    "runTsc": "yarn run -T tsc",
+    "concurrent": "yarn run -T concurrently",
+    "watch": "yarn concurrent 'NODE_ENV=production yarn umd --watch' 'yarn pkg --watch --incremental'",
+    "build": "yarn clean && yarn concurrent 'NODE_ENV=production yarn umd' 'yarn pkg' 'yarn cjs'",
+    "pkg": "yarn runTsc -p tsconfig.json",
+    "cjs": "mv src/ajax.ts ajax.ts && sed 's/unfetch/cross-fetch/g' ajax.ts > src/ajax.ts && yarn runTsc -p tsconfig.json --outDir ./dist/cjs --module commonjs && mv ajax.ts src/ajax.ts",
     "clean": "rm -rf dist",
     "eslint": "yarn run -T eslint",
-    "lint": "yarn concurrently 'yarn:eslint .' 'yarn:tsc --noEmit'"
+    "lint": "yarn concurrent 'yarn:eslint .' 'yarn:runTsc --noEmit'"
   },
   "size-limit": [
     {
@@ -34,16 +28,21 @@
   ],
   "dependencies": {
     "@lukeed/uuid": "^2.0.0",
+    "cross-fetch": "^3.1.5",
+    "node-fetch": "^3.2.10",
     "unfetch": "^4.2.0"
   },
   "devDependencies": {
     "circular-dependency-plugin": "^5.2.2",
     "compression-webpack-plugin": "^10.0.0",
+    "concurrently": "^7.4.0",
     "terser-webpack-plugin": "^5.3.6",
+    "ts-loader": "^9.4.1",
     "ts-node-dev": "^2.0.0",
     "tslib": "^2.4.0",
     "typescript": "^4.8.3",
     "webpack": "^5.74.0",
-    "webpack-bundle-analyzer": "^4.6.1"
+    "webpack-bundle-analyzer": "^4.6.1",
+    "webpack-cli": "^4.10.0"
   }
 }

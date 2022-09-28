@@ -18,7 +18,7 @@ const plugins = [
   }),
   new CircularDependencyPlugin({
     failOnError: true,
-  }),
+  })
 ]
 
 if (process.env.ANALYZE) {
@@ -33,16 +33,16 @@ const config = {
   devtool: 'source-map',
   entry: {
     index: {
-      import: path.resolve(__dirname, 'src/browser/browser-umd.ts'),
+      import: path.resolve(__dirname, 'src/index.ts'),
       library: {
-        name: 'AnalyticsNext',
+        name: 'Deepin',
         type: 'umd',
       },
     },
     standalone: {
-      import: path.resolve(__dirname, 'src/browser/standalone.ts'),
+      import: path.resolve(__dirname, 'src/index.ts'),
       library: {
-        name: 'AnalyticsNext',
+        name: 'Deepin',
         type: 'window',
       },
     },
@@ -62,7 +62,7 @@ const config = {
           {
             loader: 'ts-loader',
             options: {
-              configFile: 'tsconfig.build.json',
+              configFile: 'tsconfig.json',
               transpileOnly: true,
             },
           },

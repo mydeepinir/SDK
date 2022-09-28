@@ -3,7 +3,7 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "incremental": true,
+    "incremental": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     
@@ -12,12 +12,17 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "resolveJsonModule": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "lib": ["es2020", "DOM"],
     "baseUrl": "./src",
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "outDir": "./dist/pkg",
+    "declarationMap": false,
+    "declaration": true,
+    "declarationDir": "./dist/types",
   },
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }
