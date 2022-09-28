@@ -1,0 +1,13 @@
+{
+  "name": "cjs-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start-js": "node index.js",
+    "start-ts": "ts-node index.ts"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  }
+}

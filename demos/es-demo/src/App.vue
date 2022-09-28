@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import deepIn from '../../../src'
+import deepIn from '../../../'
 import image from './assets/logo.png'
 
 let response = ref('');
@@ -25,7 +25,7 @@ function track() {
   showResponse(deepIn.track('Article Bookmarked', 'Article'))
 }
 function page() {
-  showResponse(deepIn.page('home', 'articles'))
+  showResponse(deepIn.page('home'))
 }
 function group() {
   showResponse(deepIn.group('3243432', {}))
