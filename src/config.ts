@@ -2,7 +2,7 @@ import { Configuration, InitProperties } from "./types"
 import { log } from "./utils"
 
 class DeepInConfig {
-    public configuration: Configuration = {writeKey: ''}
+    public configuration: Configuration = { writeKey: '' }
     init(writeKey: string, properties: InitProperties) {
         this.configuration = { ...properties, writeKey }
     }

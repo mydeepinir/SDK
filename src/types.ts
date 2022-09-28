@@ -2,7 +2,7 @@ export interface InitProperties {
     dontBunch?: boolean
     userID?: string
 }
-export interface Configuration extends InitProperties{
+export interface Configuration extends InitProperties {
     writeKey: string
 }
 
@@ -68,7 +68,7 @@ export interface CommonProperties {
     source?: string
 }
 
-export interface AliasProperties extends CommonProperties{
+export interface AliasProperties extends CommonProperties {
     previousId?: string
 }
 

@@ -2,31 +2,31 @@ export class LocalStorage {
     static available(): boolean {
         const test = 'test'
         try {
-        localStorage.setItem(test, test)
-        localStorage.removeItem(test)
-        return true
+            localStorage.setItem(test, test)
+            localStorage.removeItem(test)
+            return true
         } catch (e) {
-        return false
+            return false
         }
     }
 
     get<T>(key: string): T | null {
         const val = localStorage.getItem(key)
         if (val) {
-        try {
-            return JSON.parse(val)
-        } catch (e) {
-            return JSON.parse(JSON.stringify(val))
-        }
+            try {
+                return JSON.parse(val)
+            } catch (e) {
+                return JSON.parse(JSON.stringify(val))
+            }
         }
         return null
     }
 
     set<T>(key: string, value: T): T | null {
         try {
-        localStorage.setItem(key, JSON.stringify(value))
+            localStorage.setItem(key, JSON.stringify(value))
         } catch {
-        console.warn(`Unable to set ${key} in localStorage, storage may be full.`)
+            console.warn(`Unable to set ${key} in localStorage, storage may be full.`)
         }
 
         return value

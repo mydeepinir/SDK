@@ -9,13 +9,13 @@ export function sendRequest(eventsArray: EventType[]): Promise<any> {
 
     if (eventsArray.length > 1) {
         endpoint = ActionType.Batch,
-        body = {
-            type: ActionType.Batch,
-            batch: eventsArray
-        }
+            body = {
+                type: ActionType.Batch,
+                batch: eventsArray
+            }
     }
 
-    return fetch(baseUrl + endpoint, { 
+    return fetch(baseUrl + endpoint, {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',

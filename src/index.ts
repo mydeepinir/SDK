@@ -22,7 +22,7 @@ class DeepInSDK {
      * @param userId - The database ID for the user. 
      * @param traits - A dictionary of traits you know about the user.
      */
-     identify(userId: string, traits: IdentifyProperties = {}): Promise<any> {
+    identify(userId: string, traits: IdentifyProperties = {}): Promise<any> {
         config.setUser(userId)
         return sendInQueue(ActionType.Identify, { userId }, traits)
     }
@@ -41,11 +41,10 @@ class DeepInSDK {
      * lets you record page views on your website
      *
      * @param category - The category of the page. Useful for cases like ecommerce where many pages might live under a single category.
-     * @param channel - page channel
      * @param properties - associated properties of a page
      */
-    page(category?: string, channel?: string, properties: IdentifyProperties = {}): Promise<any> {
-        return sendInQueue(ActionType.Page, { category, channel }, properties)
+    page(category?: string, properties: IdentifyProperties = {}): Promise<any> {
+        return sendInQueue(ActionType.Page, { category }, properties)
     }
 
     /**
