@@ -1,4 +1,4 @@
-const deepIn = require('../../').default
+const deepIn = require('../../')
 
 deepIn.init('dHuUTYnzLb4bTV2JwQDH', { dontBunch: true })
 

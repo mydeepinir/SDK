@@ -30,7 +30,7 @@ const config = {
     global: false, // do not polyfill global object, we can use getGlobal function if needed.
   },
   mode: process.env.NODE_ENV || 'development',
-  devtool: 'source-map',
+  // devtool: 'source-map',
   entry: {
     index: {
       import: path.resolve(__dirname, 'src/index.ts'),

@@ -68,4 +68,6 @@ class DeepInSDK {
     }
 }
 
-export default new DeepInSDK()
+const deepIn = new DeepInSDK()
+export default deepIn
+export const { alias, group, page, track, identify, init } = deepIn
