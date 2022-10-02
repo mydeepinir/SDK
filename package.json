@@ -7,6 +7,7 @@
   "browser": "./dist/pkg/index.js",
   "module": "./dist/pkg/index.js",
   "types": "./dist/types/index.d.ts",
+  "files": ["dist"],
   "scripts": {
     "demo": "cd ./demos/es-demo && yarn && yarn dev",
     "umd": "webpack",
@@ -18,6 +19,7 @@
     "cjs": "mv src/ajax.ts ajax.ts && sed 's/unfetch/cross-fetch/g' ajax.ts > src/ajax.ts && yarn runTsc -p tsconfig.json --outDir ./dist/cjs --module commonjs && mv ajax.ts src/ajax.ts",
     "clean": "rm -rf dist",
     "eslint": "yarn run -T eslint",
+    "preversion": "yarn run build",
     "lint": "yarn concurrent 'yarn:eslint .' 'yarn:runTsc --noEmit'"
   },
   "size-limit": [
