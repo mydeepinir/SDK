@@ -61,25 +61,12 @@ deepIn.identify(userId, [traits]]);
 The database ID for the user. If you don’t know who the user is yet, you can set the userId an empty string and just record traits.
 
 #### traits
-A dictionary of traits you know about the user, as the following
-traits_age
-traits_age
-traits_birthday
-traits_firstName
-traits_gender
-traits_lastName
-traits_title
-traits_username
-traits_company_name
-traits_company_id
-traits_company_industry
-traits_company_employeeCount
-traits_company_plan
+A dictionary of traits you know about the user, you can read more about traits in the [identify traits type](/src/types/identify.ts)
 
 ```js
 deepIn.identify('12091906-01011992', {
-  name: 'Grace Hopper',
-  email: 'grace@usnavy.gov'
+  traits_firstName: 'Grace',
+  traits_lastName: 'Hopper'
 });
 ```
 
@@ -94,7 +81,7 @@ deepIn.track(event, [properties]);
 The name of the event you’re tracking.
 
 #### properties
-A dictionary of properties for the event. If the event was 'Added to Cart', it might have properties like price and productType.
+A dictionary of properties for the event. If the event was 'Added to Cart', it might have properties like price and productType. you can read more about properties in the [track properties type](/src/types/track.ts)
 
 ## Page
 The Page method lets you record page views on your website, along with optional extra information about the page viewed by the user.
@@ -107,7 +94,7 @@ deepIn.page([category], [properties]);
 The category of the page. Useful for cases like ecommerce where many pages might live under a single category.
 
 #### properties
-A dictionary of properties of the page.
+A dictionary of properties of the page. you can read more about properties in the [page properties type](/src/types/page.ts)
 
 ```js
 deepIn.page('Pricing');
@@ -115,10 +102,9 @@ deepIn.page('Pricing');
 
 ```js
 deepIn.page('Pricing', {
-  title: 'Segment Pricing',
-  url: 'https://segment.com/pricing',
-  path: '/pricing',
-  referrer: 'https://segment.com/warehouses'
+  page_title: 'Segment Pricing',
+  page_url: 'https://segment.com/pricing',
+  page_referrer: 'https://segment.com/warehouses'
 });
 ```
 
@@ -134,14 +120,12 @@ deepIn.group(groupId, [traits]);
 The Group ID to associate with the current user.
 
 #### traits
-A dictionary of traits for the group. Example traits for a group include address, website, and employees.
+A dictionary of traits for the group. Example traits for a group include address, website, and employees. you can read more about traits in the [track traits type](/src/types/group.ts)
 
 ```js
 deepIn.group('UNIVAC Working Group', {
-  principles: ['Eckert', 'Mauchly'],
-  site: 'Eckert–Mauchly Computer Corporation',
-  statedGoals: 'Develop the first commercial computer',
-  industry: 'Technology'
+  traits_employees: 'Eckert–Mauchly',
+  traits_industry: 'IT',
 });
 ```
 
