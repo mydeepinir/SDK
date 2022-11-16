@@ -15,8 +15,10 @@ export function sendRequest(eventsArray: EventType[]): Promise<any> {
             batch: eventsArray,
         }
     }
-    body.context = {
-        agent: navigator.userAgent
+    if (typeof window !== 'undefined') {
+        body.context = {
+            agent: window.navigator.userAgent
+        }
     }
     const url = baseUrl + endpoint
 

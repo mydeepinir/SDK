@@ -1,4 +1,4 @@
-const deepIn = require('../../')
+const deepIn = require('deepin-js-sdk')
 
 deepIn.init('dHuUTYnzLb4bTV2JwQDH', { dontBunch: true })
 

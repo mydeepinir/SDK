@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import deepIn from '../../../'
+import deepIn from 'deepin-js-sdk'
 import image from './assets/logo.png'
 
 let response = ref('');

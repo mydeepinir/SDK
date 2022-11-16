@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "deepin-js-sdk": "../..",
     "vue": "^3.2.37"
   },
   "devDependencies": {
