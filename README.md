@@ -15,29 +15,34 @@
 
 ## In Nodejs
 ```shell
-  yarn add deepin-sdk
+  yarn add deepin-js-sdk
 ```
 ```js
-  const deepIn = require('deepin-sdk')
+  const deepIn = require('deepin-js-sdk')
   ...
 ```
+[exmaple](https://github.com/mydeepinir/SDK/blob/main/demos/cjs-demo/index.ts)
+
 ## In Es6
 ```shell
-  yarn add deepin-sdk
+  yarn add deepin-js-sdk
 ```
 ```js
-  import deepIn from 'deepin-sdk'
+  import deepIn from 'deepin-js-sdk'
   ...
 ```
+[exmaple](https://github.com/mydeepinir/SDK/blob/main/demos/es-demo/src/App.vue)
+
 ## In Es5
 Copy the following line in the index.html
 ```html
-  <script src="DEEPIN-CDN/dist/umd/standalone.js"></script>
+  <script src="https://stage-web.mydeepin.ir/download/standalone.js"></script>
   <script>
     const deepIn = window.Deepin
     ...
   </script>
 ```
+[example](https://github.com/mydeepinir/SDK/blob/main/demos/umd-demo/index.html)
 
 # Api
 
