@@ -2,6 +2,7 @@
 
 [![MIT License][license-image]][license-url]
 [![NPM version][npm-version-image]][npm-url]
+[![Package Quality][packageQuality-image]][packageQuality-url]
 
 ## How to
 - [Install](#install)
@@ -152,5 +153,8 @@ The previous ID that the user was recognized by. This defaults to the currently 
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]: LICENSE
 
-[npm-url]: https://npmjs.org/package/deepin-sdk
-[npm-version-image]: http://img.shields.io/npm/v/deepin-sdk.svg?style=flat
+[npm-url]: https://npmjs.com/package/deepin-js-sdk
+[npm-version-image]: http://img.shields.io/npm/v/deepin-js-sdk.svg?style=flat
+
+[packageQuality-image]: http://npm.packagequality.com/shield/deepin-js-sdk.svg
+[packageQuality-url]: http://packagequality.com/#?package=deepin-js-sdk
