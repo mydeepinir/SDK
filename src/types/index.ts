@@ -1,25 +1,21 @@
-import { PageProperties } from './page'
-export { PageProperties } from './page'
-import { ScreenProperties } from './screen'
-export { ScreenProperties } from './screen'
-import { TrackProperties } from './track'
-export { TrackProperties } from './track'
-import { AliasProperties } from './alias'
-export { AliasProperties } from './alias'
-import { GroupProperties } from './group'
-export { GroupProperties } from './group'
-export { IdentifyProperties } from './identify'
+import type { PageProperties } from './page'
+import type { ScreenProperties } from './screen'
+import type { TrackProperties } from './track'
+import type { AliasProperties } from './alias'
+import type { GroupProperties } from './group'
+import type { IdentifyProperties } from './identify'
 
-export interface InitProperties {
+type EventType = PageProperties | ScreenProperties | TrackProperties | AliasProperties | GroupProperties
+
+interface InitProperties {
     dontBunch?: boolean
     userID?: string
 }
-export interface Configuration extends InitProperties {
+interface Configuration extends InitProperties {
     writeKey: string
 }
 
-export type EventType = PageProperties | ScreenProperties | TrackProperties | AliasProperties | GroupProperties
-export enum ActionType {
+enum ActionType {
     Identify = 'identify',
     Track = 'track',
     Alias = 'alias',
@@ -27,4 +23,17 @@ export enum ActionType {
     Page = 'page',
     Screen = 'screen',
     Batch = 'batch',
+}
+
+export {
+    PageProperties,
+    ScreenProperties,
+    TrackProperties,
+    AliasProperties,
+    GroupProperties,
+    IdentifyProperties,
+    EventType,
+    ActionType,
+    Configuration,
+    InitProperties
 }
