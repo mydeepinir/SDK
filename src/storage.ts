@@ -1,3 +1,4 @@
+
 export class LocalStorage {
     static available(): boolean {
         const test = 'test'
@@ -10,32 +11,37 @@ export class LocalStorage {
         }
     }
 
-    get<T>(key: string): T | null {
-        const val = localStorage.getItem(key)
+    getString(key: string): string {
+        return isAvailable ? localStorage.getItem(key) || "" : ""
+    }
+    get(key: string, initValue: any = {}): any {
+        const val = this.getString(key)
         if (val) {
             try {
                 return JSON.parse(val)
             } catch (e) {
-                return JSON.parse(JSON.stringify(val))
+                return initValue
             }
         }
-        return null
+        return initValue
     }
 
     set<T>(key: string, value: T): T | null {
-        try {
-            localStorage.setItem(key, JSON.stringify(value))
-        } catch {
-            console.warn(`Unable to set ${key} in localStorage, storage may be full.`)
+        if (isAvailable) {
+            let v: string = typeof value === "string" ? value : JSON.stringify(value)
+            localStorage.setItem(key, v)
         }
 
         return value
     }
 
     remove(key: string): void {
-        return localStorage.removeItem(key)
+        if (isAvailable) {
+            return localStorage.removeItem(key)
+        }
     }
 }
 
 
 export const storage = new LocalStorage()
+const isAvailable = LocalStorage.available()

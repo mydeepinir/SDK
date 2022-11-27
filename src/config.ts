@@ -1,5 +1,4 @@
 import { Configuration, InitProperties } from "./types"
-import { log } from "./utils"
 
 class DeepInConfig {
     public configuration: Configuration = { writeKey: '' }
@@ -9,15 +8,13 @@ class DeepInConfig {
     setUser(userId?: string) {
         this.configuration.userID = userId
     }
-    isConfigured() {
+    checkError() {
         if (!this.configuration) {
-            log('It must be initialized')
-            return false
+            return 'It must be initialized'
         } else if (!this.configuration.writeKey) {
-            log('Please set the writeKey in the init method')
-            return false
+            return 'Please set the writeKey in the init method'
         }
-        return true
+        return ''
     }
 }
 
