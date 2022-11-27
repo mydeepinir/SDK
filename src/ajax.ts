@@ -1,4 +1,4 @@
-import fetch from 'unfetch'
+import fetch from 'cross-fetch'
 import { ActionType, EventType } from './types'
 import config from './config'
 
@@ -20,8 +20,11 @@ export function sendRequest(eventsArray: EventType[]): Promise<any> {
             agent: window.navigator.userAgent
         }
     }
-    const url = baseUrl + endpoint
+    return postRequest(endpoint, body)
+}
 
+export function postRequest(endpoint: string, body: any): Promise<any> {
+    const url = baseUrl + endpoint
     return fetch(url, {
         headers: {
             'Accept': 'application/json',
