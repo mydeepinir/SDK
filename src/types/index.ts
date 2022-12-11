@@ -7,11 +7,11 @@ import type { IdentifyProperties } from './identify'
 
 type EventType = PageProperties | ScreenProperties | TrackProperties | AliasProperties | GroupProperties
 
-interface InitProperties {
+interface InitConfiguration {
     dontBunch?: boolean
     userID?: string
 }
-interface Configuration extends InitProperties {
+interface Configuration extends InitConfiguration {
     writeKey: string
 }
 
@@ -35,5 +35,5 @@ export {
     EventType,
     ActionType,
     Configuration,
-    InitProperties
+    InitConfiguration
 }

@@ -1,9 +1,9 @@
-import { Configuration, InitProperties } from "./types"
+import { Configuration, InitConfiguration } from "./types"
 
 class DeepInConfig {
     public configuration: Configuration = { writeKey: '' }
-    init(writeKey: string, properties: InitProperties) {
-        this.configuration = { ...properties, writeKey }
+    init(writeKey: string, configuration: InitConfiguration) {
+        this.configuration = { ...configuration, writeKey }
     }
     setUser(userId?: string) {
         this.configuration.userID = userId
