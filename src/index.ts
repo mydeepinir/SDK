@@ -1,5 +1,5 @@
 
-import { ActionType, GroupProperties, IdentifyProperties, InitProperties, TrackProperties } from './types'
+import { ActionType, GroupProperties, IdentifyProperties, InitConfiguration, TrackProperties } from './types'
 import { sendInQueue } from './queue'
 import { init as initDeviceId } from './deviceId'
 import config from './config'
@@ -13,7 +13,7 @@ class DeepInSDK {
      * @param writeKey - Your write key
      * @param properties - Some shared configurations
      */
-    init(writeKey: string, properties: InitProperties = {}) {
+    init(writeKey: string, properties: InitConfiguration = {}) {
         initDeviceId()
         deepInConfig.init(writeKey, properties)
     }
