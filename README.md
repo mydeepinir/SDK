@@ -3,19 +3,26 @@
 [![MIT License][license-image]][license-url]
 [![NPM version][npm-version-image]][npm-url]
 [![Package Quality][packagequality-image]][packagequality-url]
-![ts](typescript-url)
+[![TypeScript](typescript-image)](https://typescriptlang.org)
 
-## How to
+## Table of Contents
 
-- [Use Deepin SDK](#how-to-use-deepin-sdk)
-  - [With Package Managers(npm, yarn)](#with-package-managers)
-  - [Without Package Managers](#without-package-managers)
-  - [In Node.js](#in-nodejs)
-- [Use API](#api)
+- [How to install deepin sdk](#how-to-install-and-import-deepin-sdk)
+  - [With package managers(npm, yarn)](#with-package-managers)
+  - [Without package managers](#without-package-managers)
+  - [In node.js](#in-nodejs)
+- [Initialize and test]()
+- [Api](#api)
+  - [Init](#init)
+  - [Identify](#identify)
+  - [Page](#page)
+  - [Track](#track)
+  - [Group](#group)
+  - [Alias](#alias)
 
-# How to use Deepin SDK
+# How to install and import deepin SDK
 
-Its able to be used in react, vue, svelte, react-native, nodeJs, flutter, cordova and whereever you can run javascript code as the following ways.
+deepin sdk can be used in react, vue, svelte, react-native, nodeJs, flutter, cordova and in other capacities you may require that can run javascript code as follows:
 
 ### With Package Managers
 
@@ -40,7 +47,7 @@ The following code shows you how could it be imported in es6 or 7 or typescript.
 Copy the following line in an html file
 
 ```html
-<script src="https://stage-web.mydeepin.ir/download/standalone.js"></script>
+<script src="https://mydeepin.ir/download/deepin-js-sdk-v1.1.1.js"></script>
 <script>
   const deepIn = window.Deepin
   ...
@@ -62,6 +69,22 @@ Copy the following line in an html file
 ```
 
 [Code Example In NodeJs](https://github.com/mydeepinir/SDK/blob/main/demos/cjs-demo/index.ts)
+
+# Initialization And Test
+
+First you need to create a new source(web sdk) in [deepin panel](https://dash.mydeepin.ir) and get a writekey then use `deepin` instance to be able to initialize it by the following code:
+
+```js
+deepIn.init(writeKey);
+```
+Now you are ready to send events using this instance,
+It creates a bundle of events and send them together by default. Thus, for the first time you can use the following code to send a page event instantly and check whether the event has been sent successfully.
+
+```js
+deepIn.init(writekey);
+deepIn.page() // calls a page event
+deepIn.flush() // cleanse the queue and sends all the events
+```
 
 # Api
 
@@ -186,7 +209,7 @@ The previous ID that the user was recognized by. This defaults to the currently 
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]: LICENSE
 [npm-url]: https://npmjs.com/package/deepin-js-sdk
-[typescript-url]: https://flat.badgen.net/badge/-/TypeScript/blue?icon=typescript&label
+[typescript-image]: https://badgen.net/badge/icon/typescript?icon=typescript&label
 [npm-version-image]: http://img.shields.io/npm/v/deepin-js-sdk.svg?style=flat
 [packagequality-image]: http://npm.packagequality.com/shield/deepin-js-sdk.svg
 [packagequality-url]: http://packagequality.com/#?package=deepin-js-sdk
