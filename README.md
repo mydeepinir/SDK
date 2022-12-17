@@ -3,7 +3,7 @@
 [![MIT License][license-image]][license-url]
 [![NPM version][npm-version-image]][npm-url]
 [![Package Quality][packagequality-image]][packagequality-url]
-[![TypeScript](typescript-image)](https://typescriptlang.org)
+[![TypeScript][typescript-image]](https://typescriptlang.org)
 
 ## Table of Contents
 
@@ -11,7 +11,7 @@
   - [With package managers(npm, yarn)](#with-package-managers)
   - [Without package managers](#without-package-managers)
   - [In node.js](#in-nodejs)
-- [Initialize and test]()
+- [Initialization And Test](#initialization-and-test)
 - [Api](#api)
   - [Init](#init)
   - [Identify](#identify)
@@ -209,7 +209,7 @@ The previous ID that the user was recognized by. This defaults to the currently 
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]: LICENSE
 [npm-url]: https://npmjs.com/package/deepin-js-sdk
-[typescript-image]: https://badgen.net/badge/icon/typescript?icon=typescript&label
+[typescript-image]: http://badgen.net/badge/icon/typescript?icon=typescript&label
 [npm-version-image]: http://img.shields.io/npm/v/deepin-js-sdk.svg?style=flat
 [packagequality-image]: http://npm.packagequality.com/shield/deepin-js-sdk.svg
 [packagequality-url]: http://packagequality.com/#?package=deepin-js-sdk
