@@ -1,7 +1,8 @@
 <html lang="en">
 
 <head>
-    <script src="../../dist/umd/standalone.js"></script>
+    <!-- <script src="../../dist/umd/standalone.js"></script> -->
+    <script src="https://stage-web.mydeepin.ir/download/deepin-js-sdk-v1.1.1.js"></script>
     <script>
         const deepIn = window.Deepin
         const $ = selector => document.querySelector(selector)
@@ -10,9 +11,8 @@
         }
         const $click = (selector, callback) => $bind(selector, 'click', callback)
 
-        function showResponse(promise) {
-            console.log('sent a request')
-            promise.then((d) => {
+        function showResponse() {
+            deepIn.flush().then((d) => {
                 $('.response').innerHTML = JSON.stringify(d, null, 4)
             }).catch(e => {
                 $('.response').innerHTML = JSON.stringify(e, null, 4)
@@ -28,13 +28,13 @@
             showResponse(deepIn.track('Article Bookmarked', 'Article'))
         }
         function page() {
-            showResponse(deepIn.page('home'))
+            showResponse(deepIn.page())
         }
         function group() {
+            deepIn.flush()
             showResponse(deepIn.group('3243432', {}))
         }
         function alias() {
-            deepIn.flush()
             showResponse(deepIn.alias('345342424323', '354222234423'))
         }
 
