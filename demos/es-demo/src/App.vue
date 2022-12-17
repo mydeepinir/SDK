@@ -9,7 +9,7 @@ let writekeyText = ref('dHuUTYnzLb4bTV2JwQDH');
 let showSendPage = ref(false);
 
 function showResponse(promise: Promise<any>) {
-  promise.then((d) => {
+  deepIn.flush().then((d) => {
     response.value = JSON.stringify(d, null, 4)
   }).catch(e => {
     response.value = JSON.stringify(e, null, 4)
@@ -36,7 +36,7 @@ function alias() {
 }
 
 function setWriteKey() {
-  deepIn.init(writekeyText.value, { dontBunch: true })
+  deepIn.init(writekeyText.value)
   showSendPage.value = true
 }
 </script>

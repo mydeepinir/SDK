@@ -34,6 +34,7 @@
             showResponse(deepIn.group('3243432', {}))
         }
         function alias() {
+            deepIn.flush()
             showResponse(deepIn.alias('345342424323', '354222234423'))
         }
 
@@ -45,7 +46,7 @@
             $click('button.alias', alias)
             $click('.setWriteKey', () => {
                 const writeKeyText = $('input.writeKeyInput').value
-                deepIn.init(writeKeyText, { dontBunch: true })
+                deepIn.init(writeKeyText)
                 $('.actionsDiv').style.opacity = 1
                 $('.WriteKeyDiv').style.opacity = 0
                 $('.WriteKeyDiv').style.marginTop = '-4rem'

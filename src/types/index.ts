@@ -8,7 +8,6 @@ import type { IdentifyProperties } from './identify'
 type EventType = PageProperties | ScreenProperties | TrackProperties | AliasProperties | GroupProperties
 
 interface InitConfiguration {
-    dontBunch?: boolean
     userID?: string
 }
 interface Configuration extends InitConfiguration {

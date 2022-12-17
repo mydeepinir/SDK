@@ -1,6 +1,6 @@
 
 import { ActionType, GroupProperties, IdentifyProperties, InitConfiguration, TrackProperties } from './types'
-import { sendInQueue } from './queue'
+import { flushEvents, sendInQueue } from './queue'
 import { init as initDeviceId } from './deviceId'
 import config from './config'
 
@@ -68,8 +68,15 @@ class DeepInSDK {
     alias(userId: string, previousId: string): Promise<any> {
         return sendInQueue(ActionType.Alias, { userId, previousId: previousId || deepInConfig.configuration?.userID }, {})
     }
+
+    /**
+     * Release the events bunch
+     */
+    flush(): Promise<any> {
+        return flushEvents()
+    }
 }
 
 const deepIn = new DeepInSDK()
 export default deepIn
-export const { alias, group, page, track, identify, init } = deepIn
+export const { alias, group, page, track, identify, init, flush } = deepIn

@@ -55,12 +55,18 @@ export async function sendInQueue(actionType: ActionType, eventData: any, eventO
     }
 
     queue.add(event)
-    const releaseEventsStack = deviceId && (config.configuration.dontBunch || !localStorageIsAvailable || releaseCondition(queue.items))
+    const releaseEventsStack = deviceId && (!localStorageIsAvailable || releaseCondition(queue.items))
 
     if (releaseEventsStack) {
-        queue.lock()
-        await sendRequest(queue.items)
-        queue.clear()
-        queue.unlock()
+        return flushEvents()
     }
+}
+
+export async function flushEvents() {
+    queue.lock()
+    const result = await sendRequest(queue.items)
+    queue.clear()
+    queue.unlock()
+
+    return result
 }

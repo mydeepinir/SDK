@@ -1,6 +1,6 @@
 const deepIn = require('deepin-js-sdk')
 
-deepIn.init('dHuUTYnzLb4bTV2JwQDH', { dontBunch: true })
+deepIn.init('dHuUTYnzLb4bTV2JwQDH')
 
 deepIn.identify('12091906-01011992', {
     traits_firstName: 'Grace Hopper',
@@ -10,3 +10,5 @@ deepIn.identify('12091906-01011992', {
 }).catch(e => {
     console.error('Deepin Errored', e);
 })
+
+deepIn.flush()
