@@ -1,16 +1,18 @@
 import { CommonProperties } from './common'
-
+export interface IdentifyTraits {
+  age?: number | string
+  birthday?: string
+  firstName?: string
+  gender?: string
+  lastName?: string
+  title?: string
+  username?: string
+  company_name?: string
+  company_id?: string
+  company_industry?: string
+  company_employeeCount?: string
+  company_plan?: string
+}
 export interface IdentifyProperties extends CommonProperties {
-  traits_age?: number | string
-  traits_birthday?: string
-  traits_firstName?: string
-  traits_gender?: string
-  traits_lastName?: string
-  traits_title?: string
-  traits_username?: string
-  traits_company_name?: string
-  traits_company_id?: string
-  traits_company_industry?: string
-  traits_company_employeeCount?: string
-  traits_company_plan?: string
+  traits: IdentifyTraits
 }

@@ -1,7 +1,9 @@
 import { CommonProperties } from './common'
-
+export interface GroupTraits {
+  employees?: string
+  industry?: string
+  plan?: string
+}
 export interface GroupProperties extends CommonProperties {
-  traits_employees?: string
-  traits_industry?: string
-  traits_plan?: string
+  traits: GroupTraits
 }

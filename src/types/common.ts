@@ -1,47 +1,75 @@
+export interface App {
+  name?: string,
+  version?: string,
+  build?: string,
+}
+export interface Campaign {
+  name?: string,
+  source?: string,
+  medium?: string,
+  term?: string,
+  content?: string,
+}
+export interface Device {
+  id?: string,
+  advertisingId?: string,
+  manufacturer?: string,
+  model?: string,
+  name?: string,
+  type?: string,
+  version?: string,
+}
+export interface Location {
+  city?: string
+  country?: string
+  latitude?: string
+  longitude?: string
+  region?: string
+  speed?: string
+}
+export interface Network {
+  bluetooth?: string
+  carrier?: string
+  cellular?: string
+  wifi?: string
+}
+export interface Os {
+  name?: string
+  version?: string
+}
+export interface Page {
+  path?: string
+  referrer?: string
+  search?: string
+  title?: string
+  url?: string
+}
+export interface Referer {
+  type?: string
+  name?: string
+  url?: string
+  link?: string
+}
+export interface Screen {
+  density?: string
+  height?: string
+  width?: string
+}
+
 export interface CommonProperties {
   active?: boolean
-  app_name?: string
-  app_version?: string
-  app_build?: string
-  campaign_name?: string
-  campaign_source?: string
-  campaign_medium?: string
-  campaign_term?: string
-  campaign_content?: string
-  device_id?: string
-  device_advertisingId?: string
-  device_manufacturer?: string
-  device_model?: string
-  device_name?: string
-  device_type?: string
-  device_version?: string
+  app?: App,
+  campaign?: Campaign
+  device?: Device
   ip?: string
   library_axios?: string
   locale?: string
-  location_city?: string
-  location_country?: string
-  location_latitude?: string
-  location_longitude?: string
-  location_region?: string
-  location_speed?: string
-  network_bluetooth?: string
-  network_carrier?: string
-  network_cellular?: string
-  network_wifi?: string
-  os_name?: string
-  os_version?: string
-  page_path?: string
-  page_referrer?: string
-  page_search?: string
-  page_title?: string
-  page_url?: string
-  referrer_type?: string
-  referrer_name?: string
-  referrer_url?: string
-  referrer_link?: string
-  screen_density?: string
-  screen_height?: string
-  screen_width?: string
+  location?: Location
+  network?: Network
+  os?: Os
+  page?: Page
+  referer?: Referer
+  screen?: Screen
   timezone?: string
   timezone_groupId?: string
   timezone_userAgent?: string
