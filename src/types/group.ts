@@ -5,5 +5,5 @@ export interface GroupTraits {
   plan?: string
 }
 export interface GroupProperties extends CommonProperties {
-  traits: GroupTraits
+  traits?: GroupTraits
 }

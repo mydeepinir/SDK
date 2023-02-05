@@ -14,5 +14,5 @@ export interface IdentifyTraits {
   company_plan?: string
 }
 export interface IdentifyProperties extends CommonProperties {
-  traits: IdentifyTraits
+  traits?: IdentifyTraits
 }

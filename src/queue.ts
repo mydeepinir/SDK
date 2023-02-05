@@ -47,11 +47,14 @@ export async function sendInQueue(actionType: ActionType, eventData: any, eventO
     if (config.checkError()) { return Promise.reject(config.checkError()) }
 
     const event = {
-        type: actionType,
         ...eventObject,
         ...eventData,
+        type: actionType,
         deviceId,
         timestamp: getIso8601(),
+    }
+    if (config.configuration.userID) {
+        event.userId = config.configuration.userID
     }
 
     queue.add(event)
