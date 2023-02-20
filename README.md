@@ -47,7 +47,7 @@ The following code shows you how could it be imported in es6 or 7 or typescript.
 Copy the following line in an html file
 
 ```html
-<script src="https://dash.mydeepin.ir/download/deepin-js-sdk-v1.1.1.js"></script>
+<script src="https://dash.mydeepin.ir/download/deepin-js-sdk-v1.1.3.js"></script>
 <script>
   const deepIn = window.Deepin
   ...
