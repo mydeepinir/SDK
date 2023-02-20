@@ -2,7 +2,7 @@ import fetch from 'cross-fetch'
 import { ActionType, EventType } from './types'
 import config from './config'
 
-const baseUrl = "https://stage-api.mydeepin.ir/v1/"
+const baseUrl = "https://api.mydeepin.ir/v1/"
 
 export function sendRequest(eventsArray: EventType[]): Promise<any> {
     let body: any = eventsArray[0]
